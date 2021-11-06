@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'screens/screens.dart';
+
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,22 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
+      home: const NavScreen(),
     );
   }
 }
