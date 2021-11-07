@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -8,8 +9,375 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  DateTime dateTime=DateTime.now();
+
+  // TabController controller=TabController(length: 2, vsync:SingleTickerProviderStateMixin() );
+  int tabBarIndex=0;
+
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent
+    ));
+    double heightScreen=MediaQuery.of(context).size.height;
+    double widthScreen=MediaQuery.of(context).size.width;
+    return DefaultTabController(length: 3,
+        initialIndex: tabBarIndex,
+        child:  Scaffold(
+            backgroundColor: Color(0xff19233E),
+            appBar: AppBar(
+              title:Text(
+                'Palladium',
+                style: TextStyle(
+                  fontFamily: 'Open Sans',
+                  fontSize: 20,
+                  color: const Color(0xff199be0),
+                  letterSpacing: 0.8,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              backgroundColor:Color(0xff19233E),
+              elevation: 0,
+              centerTitle: true,
+              leading: IconButton(
+                  onPressed: (){},
+                  icon: Icon(Icons.menu,color: Colors.white,)),
+              actions: [
+                IconButton(
+                    onPressed: (){},
+                    icon: Icon(Icons.search,color: Colors.white,)),
+              ],
+            ),
+            body:Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child:  Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child:  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '\$596',
+                          style: TextStyle(
+                            fontFamily: 'Verdana',
+                            fontSize: 13,
+                            color: const Color(0xcfff2121),
+                            letterSpacing: 0.52,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          'W2BESO',
+                          style: TextStyle(
+                            fontFamily: 'Verdana',
+                            fontSize: 13,
+                            color: const Color(0xcfffffff),
+                            letterSpacing: 0.52,
+                          ),
+                          textAlign: TextAlign.center,
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+
+                  Stack(
+                    children: <Widget>[
+                      Container(
+                        height: heightScreen*.25,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(2.0),
+                          gradient: LinearGradient(
+                            begin: Alignment(0.0, -1.0),
+                            end: Alignment(0.0, 1.0),
+                            colors: [const Color(0xff1ecbf4), const Color(0xff194dc3)],
+                            stops: [0.0, 1.0],
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: const Color(0x29000000),
+                              offset: Offset(0, 3),
+                              blurRadius: 6,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                          top: 18,
+                          right: 18,
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: 15,
+                            child: Center(
+                              child: Image(image: AssetImage('assets/mar.png'),width: 20,height: 20,),
+                            ),
+                          )
+                      )
+
+                    ],
+                  ),
+                  SizedBox(height: 18,),
+                  Container(
+                    color: Color(0xff353E55),
+                    height: heightScreen*.05,
+                    child: TabBar(
+                        labelPadding: EdgeInsets.all(0),
+                        unselectedLabelColor: Colors.green,
+                        indicatorColor: Colors.transparent,
+                        // labelColor: Colors.black,
+                        onTap: (value){
+                          setState(() {
+                            tabBarIndex=value;
+                          });
+                        },
+                        tabs: [
+                          Tab(
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 5,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                                      color:tabBarIndex==0?Colors.white:Colors.transparent,
+                                    ),
+
+                                    child: Center(
+                                      child: Text(
+                                        'PALLADIUM',
+                                        style: TextStyle(
+                                          fontFamily: 'SF Pro Text',
+                                          fontSize: 13,
+                                          color: tabBarIndex==0?Colors.black: Color(0xffffffff),
+                                          letterSpacing: -0.20800000000000002,
+                                          fontWeight:tabBarIndex==0?FontWeight.normal: FontWeight.w500,
+                                          height: 1.6153846153846154,
+                                        ),
+                                        textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    height: 8,
+
+                                    child: Transform.rotate(
+                                      angle: -4.71,
+                                      child: Divider(
+                                        color: Colors.grey.withOpacity(.4),
+                                        thickness: 2,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Tab(
+                            child: Container(
+
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(5)),
+                                color:tabBarIndex==1?Colors.white:Colors.transparent,
+                              ),
+
+                              child: Center(
+                                child: Text(
+                                  'PLATINUM',
+                                  style: TextStyle(
+                                    fontFamily: 'SF Pro Text',
+                                    fontSize: 13,
+                                    color: tabBarIndex==1?Colors.black: Color(0xffffffff),
+                                    letterSpacing: -0.20800000000000002,
+                                    fontWeight:tabBarIndex==1?FontWeight.normal: FontWeight.w500,
+                                    height: 1.6153846153846154,
+                                  ),
+                                  textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          Tab(
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    height: 8,
+
+                                    child: Transform.rotate(
+                                      angle: -4.71,
+                                      child: Divider(
+                                        color: Colors.grey.withOpacity(.4),
+                                        thickness: 2,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 5,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                                      color:tabBarIndex==2?Colors.white:Colors.transparent,
+                                    ),
+
+                                    child: Center(
+                                      child:Text(
+                                        'PHODIUM',
+                                        style: TextStyle(
+                                          fontFamily: 'SF Pro Text',
+                                          fontSize: 13,
+                                          color: tabBarIndex==2?Colors.black: Color(0xffffffff),
+                                          letterSpacing: -0.20800000000000002,
+                                          fontWeight:tabBarIndex==2?FontWeight.normal: FontWeight.w500,
+                                          height: 1.6153846153846154,
+                                        ),
+                                        textHeightBehavior:
+                                        TextHeightBehavior(applyHeightToFirstAscent: false),
+                                        textAlign: TextAlign.center,
+                                      ),
+
+                                    ),
+                                  ),
+                                ),
+
+                              ],
+                            ),
+                          ),
+
+                        ]
+                    ),
+                  ),
+                  Expanded(
+                    child: TabBarView(
+
+                      children: [
+                        SingleChildScrollView(
+                          child: Column(
+                            children:  [
+                              Padding(
+                                padding:EdgeInsets.symmetric(vertical: 18) ,
+                                child: Center(
+                                    child: Text.rich(
+                                      TextSpan(
+                                        style: TextStyle(
+                                          fontFamily: 'Open Sans',
+                                          fontSize: 13,
+                                          color: Color(0xffffffff),
+                                          letterSpacing: -0.20800000000000002,
+                                          height: 1.6153846153846154,
+                                        ),
+                                        children: [
+                                          TextSpan(
+                                            text: 'PALLADIUM Price is : ',
+                                          ),
+                                          TextSpan(
+                                            text: '10.059.87 USD o tz ${dateTime.day} \/ ${dateTime.month} \/${dateTime.year}',
+                                            style: TextStyle(
+                                              color: Color(0xff199be0),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
+                                      textAlign: TextAlign.center,
+                                    )
+                                ),
+                              ),
+                              Container(
+                                height: heightScreen*.3,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(2.0),
+                                  color: const Color(0xffffffff),
+                                ),
+                              ),
+                              SizedBox(height: 18,),
+                              Text(
+                                'Palladium recycling does not guarantee the prices shown are correct Prices  displayed are not in real time and are for informational purposes only',
+                                style: TextStyle(
+                                  fontFamily: 'Open Sans',
+                                  fontSize: 9,
+                                  color: const Color(0xfff5f5f5),
+                                  letterSpacing: -0.14400000000000002,
+                                  height: 1.6666666666666667,
+                                ),
+                                textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
+                                textAlign: TextAlign.center,
+                              )
+                            ],
+                          ),
+                        ),
+                        SingleChildScrollView(
+                          child: Column(
+                            children:  [
+                              Padding(
+                                padding:EdgeInsets.symmetric(vertical: 18) ,
+                                child: Center(
+                                    child: Text.rich(
+                                      TextSpan(
+                                        style: TextStyle(
+                                          fontFamily: 'Open Sans',
+                                          fontSize: 13,
+                                          color: Color(0xffffffff),
+                                          letterSpacing: -0.20800000000000002,
+                                          height: 1.6153846153846154,
+                                        ),
+                                        children: [
+                                          TextSpan(
+                                            text: 'PLATINUM Price is : ',
+                                          ),
+                                          TextSpan(
+                                            text: '10.059.87 USD o tz 15 Oct \'21',
+                                            style: TextStyle(
+                                              color: Color(0xff199be0),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
+                                      textAlign: TextAlign.center,
+                                    )
+                                ),
+                              ),
+                              Container(
+                                height: heightScreen*.3,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(2.0),
+                                  color: const Color(0xffffffff),
+                                ),
+                              ),
+                              SizedBox(height: 18,),
+                              Text(
+                                'PLATINUM recycling does not guarantee the prices shown are correct Prices  displayed are not in real time and are for informational purposes only',
+                                style: TextStyle(
+                                  fontFamily: 'Open Sans',
+                                  fontSize: 9,
+                                  color: const Color(0xfff5f5f5),
+                                  letterSpacing: -0.14400000000000002,
+                                  height: 1.6666666666666667,
+                                ),
+                                textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
+                                textAlign: TextAlign.center,
+                              )
+                            ],
+                          ),
+                        ),
+                        Text('3'),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )
+        ));
   }
 }
