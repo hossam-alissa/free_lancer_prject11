@@ -32,28 +32,53 @@ class _NavScreenState extends State<NavScreen> {
       body: mainScreen[_selectedIndexScreen],
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white.withOpacity(0.0),
         onPressed: () {
           onTapped(2);
         },
         // shape: _CustomBorder(),
-        backgroundColor: _selectedIndexScreen == 2
-            ? Colors.lightBlueAccent.withOpacity(0.7)
-            : Colors.black12,
-        child: const CustomPaint(
-          child: Icon(
-            Icons.add,
-            size: 40.0,
+        // backgroundColor: _selectedIndexScreen == 2
+        //     ? Colors.lightBlueAccent.withOpacity(0.7)
+        //     : Colors.black12,
+        // backgroundColor: Colors.lightBlueAccent, //.withOpacity(0.7),
+
+        child: Container(
+          height: 56,
+          width: 56,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+
+            gradient: const LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.lightBlueAccent,
+                Colors.blue,
+              ],
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.lightBlueAccent.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 9,
+                offset: Offset(0, 10), // changes position of shadow
+              ),
+            ],
+          ),
+          child: const Icon(
+            Icons.search,
+            size: 32.0,
             color: Colors.white,
           ),
         ),
+        // ),
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
         child: Container(
           height: 50.0,
           width: double.infinity,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(1.0),
+            color: backGroundApp,
             boxShadow: const [
               BoxShadow(
                 color: Colors.black12,
@@ -68,18 +93,16 @@ class _NavScreenState extends State<NavScreen> {
               Expanded(
                 flex: 2,
                 child: columnX(
-                  _selectedIndexScreen == 0
-                      ? Icons.home
-                      : Icons.home_outlined,
-                  isEnglish ? "Home" : "الرئيسية",
+                  Icons.home_outlined,
+                  "Material_Icon",
                   0,
                 ),
               ),
               Expanded(
                 flex: 2,
                 child: columnX(
-                  _selectedIndexScreen == 1 ? Icons.saved_search : Icons.search,
-                  isEnglish ? "Type" : "النوع",
+                  Icons.layers_outlined,
+                  "Material Icon",
                   1,
                 ),
               ),
@@ -91,18 +114,16 @@ class _NavScreenState extends State<NavScreen> {
               Expanded(
                 flex: 2,
                 child: columnX(
-                  _selectedIndexScreen == 3 ? Icons.message : Icons.message_outlined,
-                  isEnglish ? "Subscribe" : "الإشتراك",
+                  Icons.credit_card_outlined,
+                  "Material Icon",
                   3,
                 ),
               ),
               Expanded(
                 flex: 2,
                 child: columnX(
-                  _selectedIndexScreen == 4
-                      ? Icons.person
-                      : Icons.person_outline,
-                  isEnglish ? "Setting" : "الإعدادات",
+                  Icons.settings_outlined,
+                  "Material Icon",
                   4,
                 ),
               ),
@@ -124,7 +145,7 @@ class _NavScreenState extends State<NavScreen> {
             iconType,
             color: _selectedIndexScreen == screenNumber
                 ? Colors.lightBlueAccent
-                : Colors.black38,
+                : Colors.grey,
           ),
           // Text(
           //   name,
