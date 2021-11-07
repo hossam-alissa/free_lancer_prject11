@@ -126,13 +126,13 @@ class _NavScreenState extends State<NavScreen> {
                 ? Colors.lightBlueAccent
                 : Colors.black38,
           ),
-          Text(
-            name,
-            style: TextStyle(
-                color: _selectedIndexScreen == screenNumber
-                    ? Colors.lightBlueAccent
-                    : Colors.black38),
-          ),
+          // Text(
+          //   name,
+          //   style: TextStyle(
+          //       color: _selectedIndexScreen == screenNumber
+          //           ? Colors.lightBlueAccent
+          //           : Colors.black38),
+          // ),
         ],
       ),
     );
