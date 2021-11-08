@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/widgets.dart';
 import '../config.dart';
 import 'screens.dart';
 
@@ -31,6 +32,38 @@ class _NavScreenState extends State<NavScreen> {
     return Directionality(
       textDirection: isEnglish == true ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
+        drawer: _selectedIndexScreen == 0 ?const CustomDrawer() : null,
+        appBar: _selectedIndexScreen == 0 ? AppBar(
+          title: const Text(
+            'Palladium',
+            style: TextStyle(
+              fontFamily: 'Open Sans',
+              fontSize: 20,
+              color: Color(0xff199be0),
+              letterSpacing: 0.8,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          backgroundColor: backGroundApp,
+          elevation: 0,
+          centerTitle: true,
+          // leading: IconButton(
+          //     onPressed: () {
+          //
+          //     },
+          //     icon: const Icon(
+          //       Icons.menu,
+          //       color: Colors.white,
+          //     )),
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.search,
+                  color: Colors.white,
+                )),
+          ],
+        ) : null,
         body: mainScreen[_selectedIndexScreen],
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
