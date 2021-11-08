@@ -28,106 +28,102 @@ class _NavScreenState extends State<NavScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: mainScreen[_selectedIndexScreen],
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.white.withOpacity(0.0),
-        onPressed: () {
-          onTapped(2);
-        },
-        // shape: _CustomBorder(),
-        // backgroundColor: _selectedIndexScreen == 2
-        //     ? Colors.lightBlueAccent.withOpacity(0.7)
-        //     : Colors.black12,
-        // backgroundColor: Colors.lightBlueAccent, //.withOpacity(0.7),
-
-        child: Container(
-          height: 56,
-          width: 56,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-
-            gradient: const LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.lightBlueAccent,
-                Colors.blue,
+    return Directionality(
+      textDirection: isEnglish == true ? TextDirection.ltr : TextDirection.rtl,
+      child: Scaffold(
+        body: mainScreen[_selectedIndexScreen],
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.white.withOpacity(0.0),
+          onPressed: () {
+            onTapped(2);
+          },
+          child: Container(
+            height: 56,
+            width: 56,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              gradient: const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.lightBlueAccent,
+                  Colors.blue,
+                ],
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.lightBlueAccent.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 9,
+                  offset: const Offset(0, 8), // changes position of shadow
+                ),
               ],
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.lightBlueAccent.withOpacity(0.5),
-                spreadRadius: 5,
-                blurRadius: 9,
-                offset: Offset(0, 10), // changes position of shadow
-              ),
-            ],
+            child: const Icon(
+              Icons.search,
+              size: 32.0,
+              color: Colors.white,
+            ),
           ),
-          child: const Icon(
-            Icons.search,
-            size: 32.0,
-            color: Colors.white,
-          ),
+          // ),
         ),
-        // ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: Container(
-          height: 50.0,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: backGroundApp,
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.black12,
-                offset: Offset(2, 2),
-                blurRadius: 6.0,
-              ),
-            ],
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(
-                flex: 2,
-                child: columnX(
-                  Icons.home_outlined,
-                  "Material_Icon",
-                  0,
+        bottomNavigationBar: BottomAppBar(
+          child: Container(
+            height: 50.0,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: backGroundApp,
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.blueAccent,
+                  offset: Offset(2, 2),
+                  blurRadius: 6.0,
                 ),
-              ),
-              Expanded(
-                flex: 2,
-                child: columnX(
-                  Icons.layers_outlined,
-                  "Material Icon",
-                  1,
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: columnX(
+                    Icons.home_outlined,
+                    "Material_Icon",
+                    0,
+                  ),
                 ),
-              ),
-              //Location Floating Action Button
-              const Expanded(
-                flex: 1,
-                child: SizedBox(width: 1),
-              ),
-              Expanded(
-                flex: 2,
-                child: columnX(
-                  Icons.credit_card_outlined,
-                  "Material Icon",
-                  3,
+                Expanded(
+                  flex: 2,
+                  child: columnX(
+                    Icons.layers_outlined,
+                    "Material Icon",
+                    1,
+                  ),
                 ),
-              ),
-              Expanded(
-                flex: 2,
-                child: columnX(
-                  Icons.settings_outlined,
-                  "Material Icon",
-                  4,
+                //Location Floating Action Button
+                const Expanded(
+                  flex: 1,
+                  child: SizedBox(width: 1),
                 ),
-              ),
-            ],
+                Expanded(
+                  flex: 2,
+                  child: columnX(
+                    Icons.credit_card_outlined,
+                    "Material Icon",
+                    3,
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: columnX(
+                    Icons.settings_outlined,
+                    "Material Icon",
+                    4,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
