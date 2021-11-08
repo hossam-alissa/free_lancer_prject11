@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               radius: 15,
                               child: Center(
                                 child: Image(
-                                  image: AssetImage('assets/mar.png'),
+                                  image: AssetImage('assets/images/mar.png'),
                                   width: 20,
                                   height: 20,
                                 ),
