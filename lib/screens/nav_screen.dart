@@ -49,9 +49,7 @@ class _NavScreenState extends State<NavScreen> {
                 elevation: 0,
                 centerTitle: true,
                 // leading: IconButton(
-                //     onPressed: () {
-                //
-                //     },
+                //     onPressed: () {},
                 //     icon: const Icon(
                 //       Icons.menu,
                 //       color: Colors.white,
@@ -124,7 +122,6 @@ class _NavScreenState extends State<NavScreen> {
                   flex: 2,
                   child: columnX(
                     Icons.home_outlined,
-                    "Material_Icon",
                     0,
                   ),
                 ),
@@ -132,7 +129,6 @@ class _NavScreenState extends State<NavScreen> {
                   flex: 2,
                   child: columnX(
                     Icons.layers_outlined,
-                    "Material Icon",
                     1,
                   ),
                 ),
@@ -145,7 +141,6 @@ class _NavScreenState extends State<NavScreen> {
                   flex: 2,
                   child: columnX(
                     Icons.credit_card_outlined,
-                    "Material Icon",
                     3,
                   ),
                 ),
@@ -153,7 +148,6 @@ class _NavScreenState extends State<NavScreen> {
                   flex: 2,
                   child: columnX(
                     Icons.settings_outlined,
-                    "Material Icon",
                     4,
                   ),
                 ),
@@ -165,7 +159,7 @@ class _NavScreenState extends State<NavScreen> {
     );
   }
 
-  InkWell columnX(iconType, String name, int screenNumber) {
+  InkWell columnX(iconType, int screenNumber) {
     return InkWell(
       onTap: () => onTapped(screenNumber),
       child: Column(
@@ -178,13 +172,6 @@ class _NavScreenState extends State<NavScreen> {
                 ? Colors.lightBlueAccent
                 : Colors.grey,
           ),
-          // Text(
-          //   name,
-          //   style: TextStyle(
-          //       color: _selectedIndexScreen == screenNumber
-          //           ? Colors.lightBlueAccent
-          //           : Colors.black38),
-          // ),
         ],
       ),
     );
