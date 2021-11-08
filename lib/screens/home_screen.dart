@@ -26,7 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
         length: 3,
         initialIndex: tabBarIndex,
         child: Directionality(
-          textDirection: isEnglish == true ? TextDirection.ltr: TextDirection.rtl,
+          textDirection:
+              isEnglish == true ? TextDirection.ltr : TextDirection.rtl,
           child: Scaffold(
               backgroundColor: backGroundApp,
               drawer: Drawer(
@@ -35,7 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               appBar: AppBar(
-
                 title: const Text(
                   'Palladium',
                   style: TextStyle(
@@ -110,10 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             gradient: const LinearGradient(
                               begin: Alignment(0.0, -1.0),
                               end: Alignment(0.0, 1.0),
-                              colors: [
-                                Color(0xff1ecbf4),
-                                Color(0xff194dc3)
-                              ],
+                              colors: [Color(0xff1ecbf4), Color(0xff194dc3)],
                               stops: [0.0, 1.0],
                             ),
                             boxShadow: const [
@@ -165,8 +162,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     flex: 5,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                            const BorderRadius.all(Radius.circular(5)),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(5)),
                                         color: tabBarIndex == 0
                                             ? Colors.white
                                             : Colors.transparent,
@@ -186,8 +183,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 : FontWeight.w500,
                                             height: 1.6153846153846154,
                                           ),
-                                          textHeightBehavior: const TextHeightBehavior(
-                                              applyHeightToFirstAscent: false),
+                                          textHeightBehavior:
+                                              const TextHeightBehavior(
+                                                  applyHeightToFirstAscent:
+                                                      false),
                                           textAlign: TextAlign.center,
                                         ),
                                       ),
@@ -212,8 +211,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             Tab(
                               child: Container(
                                 decoration: BoxDecoration(
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(5)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(5)),
                                   color: tabBarIndex == 1
                                       ? Colors.white
                                       : Colors.transparent,
@@ -233,8 +232,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                           : FontWeight.w500,
                                       height: 1.6153846153846154,
                                     ),
-                                    textHeightBehavior: const TextHeightBehavior(
-                                        applyHeightToFirstAscent: false),
+                                    textHeightBehavior:
+                                        const TextHeightBehavior(
+                                            applyHeightToFirstAscent: false),
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
@@ -260,8 +260,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     flex: 5,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                            const BorderRadius.all(Radius.circular(5)),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(5)),
                                         color: tabBarIndex == 2
                                             ? Colors.white
                                             : Colors.transparent,
@@ -281,8 +281,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 : FontWeight.w500,
                                             height: 1.6153846153846154,
                                           ),
-                                          textHeightBehavior: const TextHeightBehavior(
-                                              applyHeightToFirstAscent: false),
+                                          textHeightBehavior:
+                                              const TextHeightBehavior(
+                                                  applyHeightToFirstAscent:
+                                                      false),
                                           textAlign: TextAlign.center,
                                         ),
                                       ),
@@ -300,7 +302,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Column(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 18),
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 18),
                                   child: Center(
                                       child: Text.rich(
                                     TextSpan(
@@ -324,8 +327,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       ],
                                     ),
-                                    textHeightBehavior: const TextHeightBehavior(
-                                        applyHeightToFirstAscent: false),
+                                    textHeightBehavior:
+                                        const TextHeightBehavior(
+                                            applyHeightToFirstAscent: false),
                                     textAlign: TextAlign.center,
                                   )),
                                 ),
@@ -375,7 +379,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           text: 'PLATINUM Price is : ',
                                         ),
                                         TextSpan(
-                                          text: '10.059.87 USD o tz 15 Oct \'21',
+                                          text:
+                                              '10.059.87 USD o tz 15 Oct \'21',
                                           style: TextStyle(
                                             color: Color(0xff199be0),
                                           ),
