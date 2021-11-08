@@ -118,14 +118,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     'You can use Mobile number or Email to Enter App',
                     style: TextStyle(
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0),
+                        fontSize: 16.0),
                   ),
                   const SizedBox(height: 10.0),
                   Expanded(
                     child: ListView(
                       children: [
-                        Container(
+                        SizedBox(
                           width: width,
                           height: height * 0.6,
                           child: DefaultTabController(
@@ -174,16 +173,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   BorderRadius.circular(15),
                                             ),
                                             hintText: 'Full name',
-                                            hintStyle: TextStyle(
+                                            hintStyle: const TextStyle(
                                               color: Colors.white,
                                             ),
-                                            prefixIcon: Icon(
+                                            prefixIcon: const Icon(
                                               Icons.person,
                                               color: Colors.white,
                                             ),
                                           ),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
                                         TextFormField(
@@ -193,10 +192,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   BorderRadius.circular(15),
                                             ),
                                             hintText: 'Mobile',
-                                            hintStyle: TextStyle(
+                                            hintStyle: const TextStyle(
                                               color: Colors.white,
                                             ),
-                                            prefixIcon: Icon(
+                                            prefixIcon: const Icon(
                                               Icons.mobile_friendly_sharp,
                                               color: Colors.white,
                                             ),
@@ -212,10 +211,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   BorderRadius.circular(15),
                                             ),
                                             hintText: 'Email',
-                                            hintStyle: TextStyle(
+                                            hintStyle: const TextStyle(
                                               color: Colors.white,
                                             ),
-                                            prefixIcon: Icon(
+                                            prefixIcon: const Icon(
                                               Icons.email,
                                               color: Colors.white,
                                             ),
@@ -231,10 +230,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   BorderRadius.circular(15),
                                             ),
                                             hintText: 'Password',
-                                            hintStyle: TextStyle(
+                                            hintStyle: const TextStyle(
                                               color: Colors.white,
                                             ),
-                                            prefixIcon: Icon(
+                                            prefixIcon: const Icon(
                                               Icons.lock,
                                               color: Colors.white,
                                             ),
@@ -267,7 +266,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     color: backGroundApp,
                                     child: ListView(
                                       children: [
-                                        SizedBox(height: 20),
+                                        const SizedBox(height: 20),
                                         TextFormField(
                                           decoration: InputDecoration(
                                             border: OutlineInputBorder(
@@ -275,10 +274,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   BorderRadius.circular(15),
                                             ),
                                             hintText: 'Mobile',
-                                            hintStyle: TextStyle(
+                                            hintStyle: const TextStyle(
                                               color: Colors.white,
                                             ),
-                                            prefixIcon: Icon(
+                                            prefixIcon: const Icon(
                                               Icons.mobile_friendly_sharp,
                                               color: Colors.white,
                                             ),
@@ -294,10 +293,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   BorderRadius.circular(15),
                                             ),
                                             hintText: 'Password',
-                                            hintStyle: TextStyle(
+                                            hintStyle: const TextStyle(
                                               color: Colors.white,
                                             ),
-                                            prefixIcon: Icon(
+                                            prefixIcon: const Icon(
                                               Icons.lock,
                                               color: Colors.white,
                                             ),
