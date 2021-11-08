@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 import '../widgets/widgets.dart';
 import '../config.dart';
@@ -56,7 +59,28 @@ class _NavScreenState extends State<NavScreen> {
                 //     )),
                 actions: [
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () async{
+                        print("start");
+                        http.Request request = http.Request('GET', Uri.parse('https://packages.3codeit.com/api/products/4'));
+                        http.StreamedResponse response = await request.send();
+
+                        if (response.statusCode == 200) {
+                          // print(await response.stream.bytesToString());
+                          // print(await response.stream.transform(utf8.decoder).transform(json.decoder).first);
+                          final Map<String, dynamic> extractedData =
+                          json.decode(await response.stream.bytesToString()) as Map<String, dynamic>;
+                          // extractedData.forEach((key, value) {
+                          //   print(key);
+                          // });
+
+                          print(extractedData);
+
+                        }
+                        else {
+                          print(response.reasonPhrase);
+                        }
+
+                      },
                       icon: const Icon(
                         Icons.search,
                         color: Colors.white,
