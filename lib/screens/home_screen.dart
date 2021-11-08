@@ -30,42 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
               isEnglish == true ? TextDirection.ltr : TextDirection.rtl,
           child: Scaffold(
               backgroundColor: backGroundApp,
-              drawer: Drawer(
-                child: Container(
-                  height: 100,
-                ),
-              ),
-              appBar: AppBar(
-                title: const Text(
-                  'Palladium',
-                  style: TextStyle(
-                    fontFamily: 'Open Sans',
-                    fontSize: 20,
-                    color: Color(0xff199be0),
-                    letterSpacing: 0.8,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                backgroundColor: backGroundApp,
-                elevation: 0,
-                centerTitle: true,
-                // leading: IconButton(
-                //     onPressed: () {
-                //
-                //     },
-                //     icon: const Icon(
-                //       Icons.menu,
-                //       color: Colors.white,
-                //     )),
-                actions: [
-                  IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.search,
-                        color: Colors.white,
-                      )),
-                ],
-              ),
               body: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Column(
