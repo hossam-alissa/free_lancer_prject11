@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Palladium',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        canvasColor: Colors.white.withOpacity(0.0),
       ),
       home: const NavScreen(),
     );
