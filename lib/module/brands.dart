@@ -1,4 +1,4 @@
-var brands= {
+Map<String, List<Map<String, Object>>> brands= {
   "brands": [
     {
       "id": 4,

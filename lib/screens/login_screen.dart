@@ -1,61 +1,346 @@
 import 'package:flutter/material.dart';
 import 'package:free_laner_project11/config.dart';
 
-class LogInScreen extends StatefulWidget {
-  const LogInScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  _LogInScreenState createState() => _LogInScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LogInScreenState extends State<LogInScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
+    // Column(
+    //   children: [
+    //     const SizedBox(height: 20.0),
+    //     Row(
+    //       mainAxisAlignment: MainAxisAlignment.center,
+    //       children: [
+    //         Container(
+    //           height: 90.0,
+    //           width: 90.0,
+    //           decoration: BoxDecoration(
+    //             borderRadius: BorderRadius.circular(100),
+    //             gradient: const LinearGradient(
+    //               begin: Alignment.topCenter,
+    //               end: Alignment.bottomCenter,
+    //               colors: [
+    //                 Colors.lightBlueAccent,
+    //                 Colors.blue,
+    //               ],
+    //             ),
+    //             boxShadow: [
+    //               BoxShadow(
+    //                 color: Colors.lightBlueAccent.withOpacity(0.2),
+    //                 spreadRadius: 20,
+    //                 blurRadius: 25,
+    //                 offset: const Offset(0, 23), // changes position of shadow
+    //               ),
+    //             ],
+    //           ),
+    //         ),
+    //       ],
+    //     ),
+    //     const SizedBox(height: 20.0),
+    //     const Text(
+    //       "Create a \nNew Account",
+    //       style: TextStyle(fontSize: 30.0, color: Colors.white),
+    //     ),
+    //   ],
+    // ),
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: backGroundApp,
-        body: SafeArea(
-          child: Column(
-            children: [
-              const SizedBox(height: 20.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+          backgroundColor: backGroundApp,
+          body: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: width * 0.1),
+              child: Column(
                 children: [
-                  Container(
-                    height: 90.0,
-                    width: 90.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      gradient: const LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.lightBlueAccent,
-                          Colors.blue,
-                        ],
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.lightBlueAccent.withOpacity(0.2),
-                          spreadRadius: 20,
-                          blurRadius: 25,
-                          offset: const Offset(0, 23), // changes position of shadow
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 90.0,
+                        width: 90.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          gradient: const LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.lightBlueAccent,
+                              Colors.blue,
+                            ],
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.lightBlueAccent.withOpacity(0.2),
+                              spreadRadius: 20,
+                              blurRadius: 25,
+                              offset: const Offset(
+                                  0, 23), // changes position of shadow
+                            ),
+                          ],
                         ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
+                    children: const [
+                      Text(
+                        'Login Now',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25.0),
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    color: Colors.white,
+                    thickness: 1,
+                    endIndent: width * 0.7,
+                  ),
+                  SizedBox(height: height * 0.01),
+                  const Text(
+                    'You can use Mobile number or Email to Enter App',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18.0),
+                  ),
+                  const SizedBox(height: 10.0),
+                  Expanded(
+                    child: ListView(
+                      children: [
+                        Container(
+                          width: width,
+                          height: height * 0.6,
+                          child: DefaultTabController(
+                            length: 2,
+                            child: Scaffold(
+                              appBar: AppBar(
+                                backgroundColor: backGroundApp,
+                                elevation: 0,
+                                flexibleSpace: const TabBar(
+                                  indicatorColor: Colors.blueAccent,
+                                  indicatorSize: TabBarIndicatorSize.tab,
+                                  tabs: [
+                                    Tab(
+                                      child: Text(
+                                        'Sign Up',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 23),
+                                      ),
+                                    ),
+                                    Tab(
+                                      child: Text(
+                                        'Log In',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 23),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              body: TabBarView(
+                                children: [
+                                  ///SingUp Widget
+                                  Container(
+                                    color: backGroundApp,
+                                    child: ListView(
+                                      children: [
+                                        const SizedBox(height: 20),
+                                        TextFormField(
+                                          decoration: InputDecoration(
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                            hintText: 'Full name',
+                                            hintStyle: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                            prefixIcon: Icon(
+                                              Icons.person,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        TextFormField(
+                                          decoration: InputDecoration(
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                            hintText: 'Mobile',
+                                            hintStyle: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                            prefixIcon: Icon(
+                                              Icons.mobile_friendly_sharp,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        TextFormField(
+                                          decoration: InputDecoration(
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                            hintText: 'Email',
+                                            hintStyle: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                            prefixIcon: Icon(
+                                              Icons.email,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        TextFormField(
+                                          decoration: InputDecoration(
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                            hintText: 'Password',
+                                            hintStyle: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                            prefixIcon: Icon(
+                                              Icons.lock,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        RaisedButton(
+                                          color: Colors.blue,
+                                          elevation: 0,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8)),
+                                          onPressed: () {},
+                                          child: Text(
+                                            "SIGN UP",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 23),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+
+                                  ///LogIn Widget
+                                  Container(
+                                    color: backGroundApp,
+                                    child: ListView(
+                                      children: [
+                                        SizedBox(height: 20),
+                                        TextFormField(
+                                          decoration: InputDecoration(
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                            hintText: 'Mobile',
+                                            hintStyle: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                            prefixIcon: Icon(
+                                              Icons.mobile_friendly_sharp,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        TextFormField(
+                                          decoration: InputDecoration(
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                            hintText: 'Password',
+                                            hintStyle: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                            prefixIcon: Icon(
+                                              Icons.lock,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        RaisedButton(
+                                          color: Colors.blue,
+                                          elevation: 0,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8)),
+                                          onPressed: () {},
+                                          child: Text(
+                                            "Log In",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 23),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 20.0),
-              const Text(
-                "Create a \nNew Account",
-                style: TextStyle(fontSize: 30.0, color: Colors.white),
-              ),
-            ],
-          ),
-        ),
-      ),
+            ),
+          )),
     );
   }
+}
+
+enum RegisterType {
+  logIn,
+  logUp,
 }

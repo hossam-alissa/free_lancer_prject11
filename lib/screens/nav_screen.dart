@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:free_laner_project11/languages/custome_languages.dart';
 import 'package:http/http.dart' as http;
 
 import '../widgets/widgets.dart';
@@ -59,8 +60,57 @@ class _NavScreenState extends State<NavScreen> {
                 //     )),
                 actions: [
                   IconButton(
-                      onPressed: () async{
+                      onPressed: () async {
                         print("start");
+                        // Provider.of<LanguageProvider>(context, listen: false)
+                        //     .myChangeLanguage();
+
+                        //Register Method
+                        // var request = http.MultipartRequest('POST', Uri.parse('https://packages.3codeit.com/api/register'));
+                        // request.fields.addAll({
+                        //   'name': 'hossam',
+                        //   'email': 'hossam@ma.com',
+                        //   'password': '12345678',
+                        //   'phone': '1555',
+                        //   'country_id': '1',
+                        //   'account_type': 'company',
+                        //   'company_name': ''
+                        // });
+                        // http.StreamedResponse response = await request.send();
+                        // if (response.statusCode == 200) {
+                        //   print(await response.stream.bytesToString());
+                        // }
+                        // else {
+                        //   print(response.reasonPhrase);
+                        // }
+
+                        // LogIn Method
+                        Uri myurl =Uri.parse('https://packages.3codeit.com/api/login');
+
+                        http.post(myurl, headers: {
+                          'Accept': 'application/json',
+                          'authorization': 'pass your key(optional)'
+                        }, body: {
+                          "email": 'hossam@ma.com',
+                          "password": "12345678"
+                        }).then((response) {
+                          print(response.statusCode);
+                          print(response.body);
+                        });
+
+                        // var request = http.MultipartRequest('POST', Uri.parse('https://packages.3codeit.com/api/login'));
+                        // request.fields.addAll({
+                        //   'email': 'hossam@ma.com',
+                        //   'password': '12345678'
+                        // });
+                        // http.StreamedResponse response = await request.send();
+                        // if (response.statusCode == 200) {
+                        //   print(await response.stream.bytesToString());
+                        // }
+                        // else {
+                        //   print(response.reasonPhrase);
+                        // }
+
 
                       },
                       icon: const Icon(

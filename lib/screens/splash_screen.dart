@@ -54,7 +54,7 @@ class SplashScreen extends StatelessWidget {
               const SizedBox(height: 10.0),
               TextButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const LogInScreen()));
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const LoginScreen()));
                   },
                   child: const Text(
                     "Log & record your activities",
