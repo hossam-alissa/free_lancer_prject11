@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../screens/screens.dart';
 import '../config.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -52,7 +53,9 @@ class SplashScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10.0),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const LogInScreen()));
+                  },
                   child: const Text(
                     "Log & record your activities",
                     style: TextStyle(fontSize: 18.0, color: Colors.white),
