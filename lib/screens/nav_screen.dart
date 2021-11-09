@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:free_laner_project11/languages/custome_languages.dart';
+import 'package:free_laner_project11/module/brands.dart';
 import 'package:free_laner_project11/module/moduls.dart';
 import 'package:free_laner_project11/services/index_screen.dart';
 import 'package:http/http.dart' as http;
@@ -13,6 +14,7 @@ import 'screens.dart';
 
 class NavScreen extends StatefulWidget {
   const NavScreen({Key? key}) : super(key: key);
+
   @override
   _NavScreenState createState() => _NavScreenState();
 }
@@ -37,6 +39,11 @@ class _NavScreenState extends State<NavScreen> {
             ? AppBar(
                 title: Text(
                   getTranslate(context, "palladium"),
+                  // Provider.of<Brand>(context, listen: true)
+                  //             .brands![0]
+                  //             .createdAt!.isNotEmpty
+                  //     ? "no data "
+                  //     : "yes Data",
                   style: const TextStyle(
                     fontFamily: 'Open Sans',
                     fontSize: 20,
@@ -61,18 +68,26 @@ class _NavScreenState extends State<NavScreen> {
                         Provider.of<LanguageProvider>(context, listen: false)
                             .myChangeLanguage();
                         // Provider.of<Brands>(context, listen: false).getBrands();
-                        var request = http.Request('GET', Uri.parse('https://packages.3codeit.com/api/products/4'));
 
-
+                        var request = http.Request(
+                            'GET',
+                            Uri.parse(
+                                'https://packages.3codeit.com/api/brands'));
                         http.StreamedResponse response = await request.send();
-
                         if (response.statusCode == 200) {
-                          print(await response.stream.bytesToString());
-                        }
-                        else {
+                          // print(await response.stream.bytesToString());
+                          var json = (await jsonDecode(
+                              await response.stream.bytesToString()));
+                          // Brand.fromJson(json);
+                          Provider.of<Brand>(context, listen: false)
+                              .fromJson(json);
+                        } else {
                           print(response.reasonPhrase);
                         }
 
+                        print(Provider.of<Brand>(context, listen: false)
+                            .brands![0]
+                            .createdAt);
 
                         //Register Method
                         // var request = http.MultipartRequest('POST', Uri.parse('https://packages.3codeit.com/api/register'));
@@ -132,7 +147,7 @@ class _NavScreenState extends State<NavScreen> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white.withOpacity(0.0),
           onPressed: () {
-            changeIndexScreen(context,2);
+            changeIndexScreen(context, 2);
           },
           child: Container(
             height: 56,
@@ -225,10 +240,14 @@ class _NavScreenState extends State<NavScreen> {
     );
   }
 
-  InkWell columnX(context,iconType, int screenNumber,) {
+  InkWell columnX(
+    context,
+    iconType,
+    int screenNumber,
+  ) {
     return InkWell(
-      onTap: (){
-        changeIndexScreen(context,screenNumber);
+      onTap: () {
+        changeIndexScreen(context, screenNumber);
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
