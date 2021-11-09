@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:free_laner_project11/languages/languages.dart';
+import 'package:provider/provider.dart';
 
+import '../services/services.dart';
 import '../config.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -75,8 +78,8 @@ class CustomDrawer extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {},
-                      child: _buildListViewItems(
-                          Icons.favorite_border, getTranslate(context, "favorites")),
+                      child: _buildListViewItems(Icons.favorite_border,
+                          getTranslate(context, "favorites")),
                     ),
                     GestureDetector(
                       onTap: () {},
@@ -111,7 +114,10 @@ class CustomDrawer extends StatelessWidget {
                           Icons.share_outlined, "Share App"),
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                            changeIndexScreen(context,4);
+                        Navigator.pop(context);
+                      },
                       child: _buildListViewItems(
                           Icons.settings_outlined, "Settings"),
                     ),

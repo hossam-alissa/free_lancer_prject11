@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:free_laner_project11/languages/custome_languages.dart';
+import 'package:free_laner_project11/services/index_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
@@ -11,13 +12,11 @@ import 'screens.dart';
 
 class NavScreen extends StatefulWidget {
   const NavScreen({Key? key}) : super(key: key);
-
   @override
   _NavScreenState createState() => _NavScreenState();
 }
 
 class _NavScreenState extends State<NavScreen> {
-  int _selectedIndexScreen = 0;
   List mainScreen = [
     const HomeScreen(),
     const TypeScreen(),
@@ -26,20 +25,14 @@ class _NavScreenState extends State<NavScreen> {
     const SettingScreen(),
   ];
 
-  onTapped(int index) async {
-    setState(() {
-      _selectedIndexScreen = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection:
           getIsEnglish(context) == true ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
-        drawer: _selectedIndexScreen == 0 ? const CustomDrawer() : null,
-        appBar: _selectedIndexScreen == 0
+        drawer: getIndexScreen(context) == 0 ? const CustomDrawer() : null,
+        appBar: getIndexScreen(context) == 0
             ? AppBar(
                 title: Text(
                   getTranslate(context, "palladium"),
@@ -120,12 +113,12 @@ class _NavScreenState extends State<NavScreen> {
                 ],
               )
             : null,
-        body: mainScreen[_selectedIndexScreen],
+        body: mainScreen[getIndexScreen(context)],
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white.withOpacity(0.0),
           onPressed: () {
-            onTapped(2);
+            changeIndexScreen(context,2);
           },
           child: Container(
             height: 56,
@@ -176,6 +169,7 @@ class _NavScreenState extends State<NavScreen> {
                 Expanded(
                   flex: 2,
                   child: columnX(
+                    context,
                     Icons.home_outlined,
                     0,
                   ),
@@ -183,6 +177,7 @@ class _NavScreenState extends State<NavScreen> {
                 Expanded(
                   flex: 2,
                   child: columnX(
+                    context,
                     Icons.layers_outlined,
                     1,
                   ),
@@ -195,6 +190,7 @@ class _NavScreenState extends State<NavScreen> {
                 Expanded(
                   flex: 2,
                   child: columnX(
+                    context,
                     Icons.credit_card_outlined,
                     3,
                   ),
@@ -202,6 +198,7 @@ class _NavScreenState extends State<NavScreen> {
                 Expanded(
                   flex: 2,
                   child: columnX(
+                    context,
                     Icons.settings_outlined,
                     4,
                   ),
@@ -214,16 +211,18 @@ class _NavScreenState extends State<NavScreen> {
     );
   }
 
-  InkWell columnX(iconType, int screenNumber) {
+  InkWell columnX(context,iconType, int screenNumber,) {
     return InkWell(
-      onTap: () => onTapped(screenNumber),
+      onTap: (){
+        changeIndexScreen(context,screenNumber);
+      },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Icon(
             iconType,
-            color: _selectedIndexScreen == screenNumber
+            color: getIndexScreen(context) == screenNumber
                 ? Colors.lightBlueAccent
                 : Colors.grey,
           ),
