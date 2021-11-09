@@ -61,9 +61,9 @@ class CustomDrawer extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 20.0),
-                  const Text(
-                    "Palladium",
-                    style: TextStyle(fontSize: 20.0, color: Colors.white),
+                  Text(
+                    getTranslate(context, "palladium"),
+                    style: const TextStyle(fontSize: 20.0, color: Colors.white),
                   ),
                 ],
               ),
@@ -76,7 +76,7 @@ class CustomDrawer extends StatelessWidget {
                     GestureDetector(
                       onTap: () {},
                       child: _buildListViewItems(
-                          Icons.favorite_border, "Favorites"),
+                          Icons.favorite_border, getTranslate(context, "favorites")),
                     ),
                     GestureDetector(
                       onTap: () {},

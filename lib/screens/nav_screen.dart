@@ -35,16 +35,14 @@ class _NavScreenState extends State<NavScreen> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: getIsEnglish(context) == true
-              ? TextDirection.ltr
-              : TextDirection.rtl,
+      textDirection:
+          getIsEnglish(context) == true ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
         drawer: _selectedIndexScreen == 0 ? const CustomDrawer() : null,
         appBar: _selectedIndexScreen == 0
             ? AppBar(
                 title: Text(
-                  // 'Palladium',
-                  getTranslate(context, "welcome"),
+                  getTranslate(context, "palladium"),
                   style: const TextStyle(
                     fontFamily: 'Open Sans',
                     fontSize: 20,
@@ -114,8 +112,6 @@ class _NavScreenState extends State<NavScreen> {
                         // else {
                         //   print(response.reasonPhrase);
                         // }
-
-
                       },
                       icon: const Icon(
                         Icons.search,
@@ -159,7 +155,6 @@ class _NavScreenState extends State<NavScreen> {
               color: Colors.white,
             ),
           ),
-          // ),
         ),
         bottomNavigationBar: BottomAppBar(
           child: Container(
