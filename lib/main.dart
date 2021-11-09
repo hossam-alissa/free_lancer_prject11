@@ -31,6 +31,15 @@ class MyApp extends StatelessWidget {
               create: (_) => IndexScreen()),
           ChangeNotifierProvider<Brand>(
               create: (_) => Brand()),
+          ChangeNotifierProvider<Country>(
+              create: (_) => Country()),
+          ChangeNotifierProvider<MemberShip>(
+              create: (_) => MemberShip()),
+          ChangeNotifierProvider<Product>(
+              create: (_) => Product()),
+
+
+
           // ChangeNotifierProvider<MyProvider>(create: (_) => MyProvider()),
           // ChangeNotifierProxyProvider<UserInformation, Advertisement>(
           // create: (_) => Advertisement(),

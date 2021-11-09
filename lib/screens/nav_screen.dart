@@ -27,6 +27,15 @@ class _NavScreenState extends State<NavScreen> {
     const PaymentScreen(),
     const SettingScreen(),
   ];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Provider.of<Brand>(context,listen: false).fitchData();
+    Provider.of<Country>(context,listen: false).fitchData();
+    Provider.of<MemberShip>(context,listen: false).fitchData();
+    Provider.of<Product>(context,listen: false).fitchData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +48,6 @@ class _NavScreenState extends State<NavScreen> {
             ? AppBar(
                 title: Text(
                   getTranslate(context, "palladium"),
-                  // Provider.of<Brand>(context, listen: true)
-                  //             .brands![0]
-                  //             .createdAt!.isNotEmpty
-                  //     ? "no data "
-                  //     : "yes Data",
                   style: const TextStyle(
                     fontFamily: 'Open Sans',
                     fontSize: 20,
@@ -69,25 +73,25 @@ class _NavScreenState extends State<NavScreen> {
                             .myChangeLanguage();
                         // Provider.of<Brands>(context, listen: false).getBrands();
 
-                        var request = http.Request(
-                            'GET',
-                            Uri.parse(
-                                'https://packages.3codeit.com/api/brands'));
-                        http.StreamedResponse response = await request.send();
-                        if (response.statusCode == 200) {
-                          // print(await response.stream.bytesToString());
-                          var json = (await jsonDecode(
-                              await response.stream.bytesToString()));
-                          // Brand.fromJson(json);
-                          Provider.of<Brand>(context, listen: false)
-                              .fromJson(json);
-                        } else {
-                          print(response.reasonPhrase);
-                        }
+                        // var request = http.Request(
+                        //     'GET',
+                        //     Uri.parse(
+                        //         'https://packages.3codeit.com/api/brands'));
+                        // http.StreamedResponse response = await request.send();
+                        // if (response.statusCode == 200) {
+                        //   // print(await response.stream.bytesToString());
+                        //   var json = (await jsonDecode(
+                        //       await response.stream.bytesToString()));
+                        //   // Brand.fromJson(json);
+                        //   Provider.of<Brand>(context, listen: false).fromJson(json);
+                        // } else {
+                        //   print(response.reasonPhrase);
+                        // }
 
                         print(Provider.of<Brand>(context, listen: false)
-                            .brands![0]
-                            .createdAt);
+                            .brands![0].createdAt);
+
+                        print(Provider.of<Country>(context, listen: false).countries![0].memberships![0].pivot!.countryId);
 
                         //Register Method
                         // var request = http.MultipartRequest('POST', Uri.parse('https://packages.3codeit.com/api/register'));

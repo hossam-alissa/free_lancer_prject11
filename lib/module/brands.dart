@@ -3,39 +3,35 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
-Map<String, List<Map<String, Object>>> brandsMap = {
-  "brands": [
-    {
-      "id": 4,
-      "name": "a",
-      "name_ar": "v",
-      "image":
-          "https:\/\/packages.3codeit.com\/storage\/app\/public\/attachment\/675597.png",
-      "created_at": "2021-10-24T20:59:49.000000Z",
-      "updated_at": "2021-10-24T20:59:49.000000Z"
-    }
-  ]
-};
-
-class Brand with ChangeNotifier{
+class Brand with ChangeNotifier {
   List<Brands>? brands;
 
   Brand({this.brands});
 
+  fitchData() async {
+    try {
+      var request = http.Request(
+          'GET', Uri.parse('https://packages.3codeit.com/api/brands'));
+      http.StreamedResponse response = await request.send();
+      if (response.statusCode == 200) {
+        // print(await response.stream.bytesToString());
+        fromJson(await jsonDecode(await response.stream.bytesToString()));
+        notifyListeners();
+      } else {
+        print(response.reasonPhrase);
+      }
+    } catch (_error) {
+      rethrow;
+    }
+  }
+
   fromJson(Map<String, dynamic> json) {
-    print(json);
-    print(json['brands']);
     if (json['brands'] != null) {
       brands = <Brands>[];
-      print("I'am Here 1");
       json['brands'].forEach((v) {
-        print(v.toString());
         brands!.add(new Brands.fromJson(v));
       });
     }
-    print("I'am Here 2");
-    print(brands!.length.toString());
-    notifyListeners();
   }
 
   // Brand.fromJson(Map<String, dynamic> json) {
@@ -86,8 +82,6 @@ class Brands {
     image = json['image'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    print("Iam Here 5");
-    print(id);
   }
 
   Map<String, dynamic> toJson() {
@@ -101,38 +95,3 @@ class Brands {
     return data;
   }
 }
-
-// class Brand{
-//   int? id;
-//   String? name;
-//   String? name_ar;
-//   String? image;
-//   String? created_at;
-//   String? updated_at;
-// }
-
-// class Brands with ChangeNotifier{
-//   List<Brand> brandList = [];
-//
-//   getBrands()async{
-//     try{
-//       var request = http.Request('GET', Uri.parse('https://packages.3codeit.com/api/brands'));
-//       http.StreamedResponse response = await request.send();
-//       if (response.statusCode == 200) {
-//         // print(await response.stream.bytesToString());
-//         var extractedData = await jsonDecode(await response.stream.bytesToString());
-//         print(extractedData["brands"]);
-//         var extractedData2 = await jsonDecode(extractedData["brands"]);
-//         print(extractedData2[0].toString());
-//
-//
-//
-//       }
-//       else {
-//         print(response.reasonPhrase);
-//       }
-//     }catch(_error){
-//       rethrow;
-//     }
-//   }
-// }
