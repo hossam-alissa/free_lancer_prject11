@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:free_laner_project11/languages/custome_languages.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 import '../widgets/widgets.dart';
 import '../config.dart';
@@ -34,14 +35,17 @@ class _NavScreenState extends State<NavScreen> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: isEnglish == true ? TextDirection.ltr : TextDirection.rtl,
+      textDirection: getIsEnglish(context) == true
+              ? TextDirection.ltr
+              : TextDirection.rtl,
       child: Scaffold(
         drawer: _selectedIndexScreen == 0 ? const CustomDrawer() : null,
         appBar: _selectedIndexScreen == 0
             ? AppBar(
-                title: const Text(
-                  'Palladium',
-                  style: TextStyle(
+                title: Text(
+                  // 'Palladium',
+                  getTranslate(context, "welcome"),
+                  style: const TextStyle(
                     fontFamily: 'Open Sans',
                     fontSize: 20,
                     color: Color(0xff199be0),
@@ -62,8 +66,8 @@ class _NavScreenState extends State<NavScreen> {
                   IconButton(
                       onPressed: () async {
                         print("start");
-                        // Provider.of<LanguageProvider>(context, listen: false)
-                        //     .myChangeLanguage();
+                        Provider.of<LanguageProvider>(context, listen: false)
+                            .myChangeLanguage();
 
                         //Register Method
                         // var request = http.MultipartRequest('POST', Uri.parse('https://packages.3codeit.com/api/register'));
@@ -85,18 +89,18 @@ class _NavScreenState extends State<NavScreen> {
                         // }
 
                         // LogIn Method
-                        Uri myurl =Uri.parse('https://packages.3codeit.com/api/login');
-
-                        http.post(myurl, headers: {
-                          'Accept': 'application/json',
-                          'authorization': 'pass your key(optional)'
-                        }, body: {
-                          "email": 'hossam@ma.com',
-                          "password": "12345678"
-                        }).then((response) {
-                          print(response.statusCode);
-                          print(response.body);
-                        });
+                        // Uri myurl =Uri.parse('https://packages.3codeit.com/api/login');
+                        //
+                        // http.post(myurl, headers: {
+                        //   'Accept': 'application/json',
+                        //   'authorization': 'pass your key(optional)'
+                        // }, body: {
+                        //   "email": 'hossam@ma.com',
+                        //   "password": "12345678"
+                        // }).then((response) {
+                        //   print(response.statusCode);
+                        //   print(response.body);
+                        // });
 
                         // var request = http.MultipartRequest('POST', Uri.parse('https://packages.3codeit.com/api/login'));
                         // request.fields.addAll({

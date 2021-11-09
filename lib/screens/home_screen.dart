@@ -26,8 +26,9 @@ class _HomeScreenState extends State<HomeScreen> {
         length: 3,
         initialIndex: tabBarIndex,
         child: Directionality(
-          textDirection:
-              isEnglish == true ? TextDirection.ltr : TextDirection.rtl,
+          textDirection: getIsEnglish(context) == true
+              ? TextDirection.ltr
+              : TextDirection.rtl,
           child: Scaffold(
               backgroundColor: backGroundApp,
               body: Padding(

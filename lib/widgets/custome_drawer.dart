@@ -14,22 +14,22 @@ class CustomDrawer extends StatelessWidget {
           width: double.maxFinite,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-              topLeft: isEnglish
+              topLeft: getIsEnglish(context) == true
                   ? const Radius.circular(0)
                   : const Radius.circular(25),
-              topRight: isEnglish
+              topRight: getIsEnglish(context) == true
                   ? const Radius.circular(25)
                   : const Radius.circular(0),
-              bottomLeft: isEnglish
+              bottomLeft: getIsEnglish(context) == true
                   ? const Radius.circular(0)
                   : const Radius.circular(25),
-              bottomRight: isEnglish
+              bottomRight: getIsEnglish(context) == true
                   ? const Radius.circular(25)
                   : const Radius.circular(0),
             ),
             color: backGroundApp,
           ),
-          //    child: bodyAlertDialog,
+          // child: bodyAlertDialog,
           child: Column(
             children: [
               const SizedBox(height: 30.0),
