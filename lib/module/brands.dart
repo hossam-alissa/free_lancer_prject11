@@ -34,22 +34,6 @@ class Brand with ChangeNotifier {
     }
   }
 
-  // Brand.fromJson(Map<String, dynamic> json) {
-  //   print(json);
-  //   print(json['brands']);
-  //   if (json['brands'] != null) {
-  //     brands = <Brands>[];
-  //     print("I'am Here 1");
-  //     json['brands'].forEach((v) {
-  //       print(v.toString());
-  //       brands!.add(new Brands.fromJson(v));
-  //     });
-  //   }
-  //   print("I'am Here 2");
-  //   print(brands!.length.toString());
-  //   notifyListeners();
-  // }
-
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.brands != null) {
