@@ -4,6 +4,7 @@ import 'package:free_laner_project11/services/services.dart';
 import 'package:provider/provider.dart';
 
 import 'config.dart';
+import 'module/moduls.dart';
 import 'screens/screens.dart';
 
 void main() {
@@ -28,6 +29,8 @@ class MyApp extends StatelessWidget {
               create: (_) => LanguageProvider()),
           ChangeNotifierProvider<IndexScreen>(
               create: (_) => IndexScreen()),
+          ChangeNotifierProvider<Brands>(
+              create: (_) => Brands()),
           // ChangeNotifierProvider<MyProvider>(create: (_) => MyProvider()),
           // ChangeNotifierProxyProvider<UserInformation, Advertisement>(
           // create: (_) => Advertisement(),

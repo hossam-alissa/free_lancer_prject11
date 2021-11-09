@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:free_laner_project11/languages/custome_languages.dart';
+import 'package:free_laner_project11/module/moduls.dart';
 import 'package:free_laner_project11/services/index_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -59,6 +60,19 @@ class _NavScreenState extends State<NavScreen> {
                         print("start");
                         Provider.of<LanguageProvider>(context, listen: false)
                             .myChangeLanguage();
+                        // Provider.of<Brands>(context, listen: false).getBrands();
+                        var request = http.Request('GET', Uri.parse('https://packages.3codeit.com/api/products/4'));
+
+
+                        http.StreamedResponse response = await request.send();
+
+                        if (response.statusCode == 200) {
+                          print(await response.stream.bytesToString());
+                        }
+                        else {
+                          print(response.reasonPhrase);
+                        }
+
 
                         //Register Method
                         // var request = http.MultipartRequest('POST', Uri.parse('https://packages.3codeit.com/api/register'));
