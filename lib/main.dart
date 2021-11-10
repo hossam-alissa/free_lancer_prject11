@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:free_laner_project11/languages/custome_languages.dart';
-import 'package:free_laner_project11/services/services.dart';
 import 'package:provider/provider.dart';
 
+import '../languages/custome_languages.dart';
+import '../services/services.dart';
 import 'config.dart';
 import 'module/moduls.dart';
 import 'screens/screens.dart';
@@ -27,18 +27,11 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider<LanguageProvider>(
               create: (_) => LanguageProvider()),
-          ChangeNotifierProvider<IndexScreen>(
-              create: (_) => IndexScreen()),
-          ChangeNotifierProvider<Brand>(
-              create: (_) => Brand()),
-          ChangeNotifierProvider<Country>(
-              create: (_) => Country()),
-          ChangeNotifierProvider<MemberShip>(
-              create: (_) => MemberShip()),
-          ChangeNotifierProvider<Product>(
-              create: (_) => Product()),
-
-
+          ChangeNotifierProvider<IndexScreen>(create: (_) => IndexScreen()),
+          ChangeNotifierProvider<Brand>(create: (_) => Brand()),
+          ChangeNotifierProvider<Country>(create: (_) => Country()),
+          ChangeNotifierProvider<MemberShip>(create: (_) => MemberShip()),
+          ChangeNotifierProvider<Product>(create: (_) => Product()),
 
           // ChangeNotifierProvider<MyProvider>(create: (_) => MyProvider()),
           // ChangeNotifierProxyProvider<UserInformation, Advertisement>(

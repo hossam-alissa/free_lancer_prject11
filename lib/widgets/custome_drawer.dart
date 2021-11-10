@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:free_laner_project11/languages/languages.dart';
-import 'package:provider/provider.dart';
+import '../languages/languages.dart';
 
 import '../services/services.dart';
 import '../config.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:free_laner_project11/config.dart';
+import '../config.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

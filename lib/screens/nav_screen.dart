@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:free_laner_project11/languages/custome_languages.dart';
-import 'package:free_laner_project11/module/brands.dart';
-import 'package:free_laner_project11/module/moduls.dart';
-import 'package:free_laner_project11/services/index_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
+import '../languages/custome_languages.dart';
+import '../module/brands.dart';
+import '../module/moduls.dart';
+import '../services/index_screen.dart';
 import '../widgets/widgets.dart';
 import '../config.dart';
 import 'screens.dart';
