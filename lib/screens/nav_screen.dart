@@ -75,44 +75,6 @@ class _NavScreenState extends State<NavScreen> {
                         print(Provider.of<Country>(context, listen: false).countries![0].memberships![0].pivot!.countryId);
 
 
-                        // var request = http.Request('GET', Uri.parse('https://packages.3codeit.com/api/brands'));
-                        //
-                        //
-                        // http.StreamedResponse response = await request.send();
-                        //
-                        // if (response.statusCode == 200) {
-                        //   print(await response.stream.bytesToString());
-                        // }
-                        // else {
-                        //   print(response.reasonPhrase);
-                        // }
-
-                        var request = http.MultipartRequest('POST', Uri.parse('https://packages.3codeit.com/api/login'));
-                        request.fields.addAll({
-                          'email': 'maged@ma.com',
-                          'password': '123'
-                        });
-                        http.StreamedResponse response = await request.send();
-                        if (response.statusCode == 200) {
-                          // print(await response.stream.bytesToString());
-                          // print(await jsonDecode(await response.stream.bytesToString()));
-                          var x = await jsonDecode(await response.stream.bytesToString());
-                          print(x);
-
-                        }
-                        else {
-                          print(response.reasonPhrase);
-                        }
-
-                        // var request = http.Request('GET', Uri.parse('https://packages.3codeit.com/api/countries'));
-                        // http.StreamedResponse response = await request.send();
-                        // if (response.statusCode == 200) {
-                        //   // print(await response.stream.bytesToString());
-                        //   print(await jsonDecode(await response.stream.bytesToString()));
-                        // }
-                        // else {
-                        //   print(response.reasonPhrase);
-                        // }
                       },
                       icon: const Icon(
                         Icons.search,
