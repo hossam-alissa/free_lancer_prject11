@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:free_laner_project11/languages/custome_languages.dart';
 import 'package:free_laner_project11/module/brands.dart';
 import 'package:free_laner_project11/module/moduls.dart';
 import 'package:free_laner_project11/services/index_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 import '../widgets/widgets.dart';
 import '../config.dart';
@@ -68,15 +71,48 @@ class _NavScreenState extends State<NavScreen> {
                         print("start");
                         Provider.of<LanguageProvider>(context, listen: false)
                             .myChangeLanguage();
-                        // Provider.of<Brands>(context, listen: false).getBrands();
-
-
-                        print(Provider.of<Brand>(context, listen: false)
-                            .brands![0].createdAt);
-
+                        print(Provider.of<Brand>(context, listen: false).brands![0].createdAt);
                         print(Provider.of<Country>(context, listen: false).countries![0].memberships![0].pivot!.countryId);
 
 
+                        // var request = http.Request('GET', Uri.parse('https://packages.3codeit.com/api/brands'));
+                        //
+                        //
+                        // http.StreamedResponse response = await request.send();
+                        //
+                        // if (response.statusCode == 200) {
+                        //   print(await response.stream.bytesToString());
+                        // }
+                        // else {
+                        //   print(response.reasonPhrase);
+                        // }
+
+                        var request = http.MultipartRequest('POST', Uri.parse('https://packages.3codeit.com/api/login'));
+                        request.fields.addAll({
+                          'email': 'maged@ma.com',
+                          'password': '123'
+                        });
+                        http.StreamedResponse response = await request.send();
+                        if (response.statusCode == 200) {
+                          // print(await response.stream.bytesToString());
+                          // print(await jsonDecode(await response.stream.bytesToString()));
+                          var x = await jsonDecode(await response.stream.bytesToString());
+                          print(x);
+
+                        }
+                        else {
+                          print(response.reasonPhrase);
+                        }
+
+                        // var request = http.Request('GET', Uri.parse('https://packages.3codeit.com/api/countries'));
+                        // http.StreamedResponse response = await request.send();
+                        // if (response.statusCode == 200) {
+                        //   // print(await response.stream.bytesToString());
+                        //   print(await jsonDecode(await response.stream.bytesToString()));
+                        // }
+                        // else {
+                        //   print(response.reasonPhrase);
+                        // }
                       },
                       icon: const Icon(
                         Icons.search,
