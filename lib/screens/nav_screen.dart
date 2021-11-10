@@ -31,10 +31,10 @@ class _NavScreenState extends State<NavScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Provider.of<Brand>(context,listen: false).fitchData();
-    Provider.of<Country>(context,listen: false).fitchData();
-    Provider.of<MemberShip>(context,listen: false).fitchData();
-    Provider.of<Product>(context,listen: false).fitchData();
+    Provider.of<Brand>(context, listen: false).fitchData();
+    Provider.of<Country>(context, listen: false).fitchData();
+    Provider.of<MemberShip>(context, listen: false).fitchData();
+    Provider.of<Product>(context, listen: false).fitchData();
   }
 
   @override
@@ -71,10 +71,27 @@ class _NavScreenState extends State<NavScreen> {
                         print("start");
                         Provider.of<LanguageProvider>(context, listen: false)
                             .myChangeLanguage();
-                        print(Provider.of<Brand>(context, listen: false).brands![0].createdAt);
-                        print(Provider.of<Country>(context, listen: false).countries![0].memberships![0].pivot!.countryId);
+                        print(Provider.of<Brand>(context, listen: false)
+                            .brands![0]
+                            .createdAt);
+                        print(Provider.of<Country>(context, listen: false)
+                            .countries![0]
+                            .memberships![0]
+                            .pivot!
+                            .countryId);
 
-
+                        var request = http.MultipartRequest(
+                            'POST',
+                            Uri.parse(
+                                'https://packages.3codeit.com/api/login'));
+                        request.fields.addAll(
+                            {'email': 'maged@ma.com', 'password': '123'});
+                        http.StreamedResponse response = await request.send();
+                        if (response.statusCode == 200) {
+                          print(await response.stream.bytesToString());
+                        } else {
+                          print(response.reasonPhrase);
+                        }
                       },
                       icon: const Icon(
                         Icons.search,
